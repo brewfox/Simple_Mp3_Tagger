@@ -40,7 +40,8 @@ for root, dirs, files in os.walk("."):
 
 			# Call id3v2 to set the Id3 Artist tag to the directory name
 			subprocess.check_output(['id3v2','--artist', MP3_artist, MP3_path])
-			subprocess.check_output(['id3v2','--song', MP3_song, MP3_path])
+			song_name = os.path.splitext(MP3_song)[0]
+			subprocess.check_output(['id3v2','--song', song_name, MP3_path])
  			Unique_Bands.add(MP3_artist)
 
 			if MP3_size > 10000000:
